@@ -233,6 +233,7 @@ OPTION(BUILD_TEST "Build the FreeCAD test module" ON)
 OPTION(BUILD_TECHDRAW "Build the FreeCAD Technical Drawing module" ON)
 OPTION(BUILD_WEB "Build the FreeCAD web module" ON)
 OPTION(BUILD_VR "Build the FreeCAD Oculus Rift support (need Oculus SDK 4.x or higher)" OFF)
+OPTION(BUILD_IntraLattice "Build IntraLattice Module" ON )
 
 if(MSVC)
     OPTION(BUILD_FEM_NETGEN "Build the FreeCAD FEM module with the NETGEN mesher" ON)
