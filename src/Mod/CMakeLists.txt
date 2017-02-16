@@ -139,3 +139,7 @@ if(BUILD_ADDONMGR)
   add_subdirectory(AddonManager)
 endif(BUILD_ADDONMGR)
 
+if(BUILD_IntraLattice)
+  add_subdirectory(IntraLattice)
+endif(BUILD_IntraLattice)
+
