@@ -39,25 +39,52 @@
 DEF_STD_CMD(CmdIntraLatticeTest)
 
 CmdIntraLatticeTest::CmdIntraLatticeTest()
-  :Command("IntraLattice_Test")
+  :Command("test")
 {
     sAppModule    = "IntraLattice";
     sGroup        = QT_TR_NOOP("IntraLattice");
     sMenuText     = QT_TR_NOOP("Hello");
     sToolTipText  = QT_TR_NOOP("IntraLattice Test function");
-    sWhatsThis    = QT_TR_NOOP("IntraLattice Test function");
+    sWhatsThis    = QT_TR_NOOP("Apply Boundary Condition");
     sStatusTip    = QT_TR_NOOP("IntraLattice Test function");
     sPixmap       = "Test1";
     sAccel        = "CTRL+H";
 }
+
 
 void CmdIntraLatticeTest::activated(int)
 {
     Base::Console().Message("Hello, World!\n");
 }
 
+/*========================================================*/
+DEF_STD_CMD(CmdIntraLatticeApplyBC)
+
+CmdIntraLatticeApplyBC::CmdIntraLatticeApplyBC()
+  :Command("Apply_BC")
+{
+    sAppModule    = "IntraLattice";
+    sGroup        = QT_TR_NOOP("IntraLattice");
+    sMenuText     = QT_TR_NOOP("applying BC");
+    sToolTipText  = QT_TR_NOOP("IntraLattice Test function");
+    sWhatsThis    = QT_TR_NOOP("Apply Boundary Condition");
+    sStatusTip    = QT_TR_NOOP("IntraLattice Test function");
+    sPixmap       = "Test1";
+    sAccel        = "CTRL+H";
+}
+
+
+void CmdIntraLatticeApplyBC::activated(int)
+{
+    Base::Console().Message("Hello, World!\n");
+}
+
+
+/*==============================================================*/
 void CreateIntraLatticeCommands(void)
 {
     Gui::CommandManager &rcCmdMgr = Gui::Application::Instance->commandManager();
     rcCmdMgr.addCommand(new CmdIntraLatticeTest());
+    rcCmdMgr.addCommand(new CmdIntraLatticeApplyBC());
+
 }

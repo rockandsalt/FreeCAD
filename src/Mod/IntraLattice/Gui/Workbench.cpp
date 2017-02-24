@@ -47,18 +47,22 @@ Gui::MenuItem* Workbench::setupMenuBar() const
 {
     Gui::MenuItem* root = StdWorkbench::setupMenuBar();
     Gui::MenuItem* item = root->findItem( "&Windows" );
-    Gui::MenuItem* test = new Gui::MenuItem;
-    root->insertItem( item, test );
-    test->setCommand("IntraLattice");
-    *test << "IntraLattice_Test";
+    Gui::MenuItem* ApplyBC = new Gui::MenuItem;
+    root->insertItem( item, ApplyBC );
+    ApplyBC->setCommand("IntraLattice");
+    *ApplyBC << "test"
+             <<"Separator"
+             <<"Apply_BC";
     return root;
 }
 
 Gui::ToolBarItem* Workbench::setupToolBars() const
 {
     Gui::ToolBarItem* root = StdWorkbench::setupToolBars();
-    Gui::ToolBarItem* test = new Gui::ToolBarItem(root);
-    test->setCommand( "IntraLattice Tools" );
-    *test << "IntraLattice_Test"; 
+    Gui::ToolBarItem* ApplyBC = new Gui::ToolBarItem(root);
+    ApplyBC->setCommand( "IntraLattice Tools" );
+    *ApplyBC << "test"
+             << "Separator"
+             << "Apply_BC"; 
     return root;
 }
