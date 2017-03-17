@@ -59,6 +59,8 @@ endif (${CMAKE_CXX_COMPILER_ID} MATCHES "Clang")
 
 # ================================================================================
 
+ 
+
 # Allow developers to use Boost < 1.48
 if(NOT ${BOOST_MIN_VERSION})
    set(BOOST_MIN_VERSION 1.48)
@@ -391,6 +393,38 @@ if(FREECAD_LIBPACK_USE)
 endif(FREECAD_LIBPACK_USE)
 
 if(NOT FREECAD_LIBPACK_USE OR FREECAD_LIBPACK_CHECKFILE_CLBUNDLER)
+
+
+#======================================================================
+####################################
+########### INTRALATTICE ###########
+####################################
+
+#Add directory of the intralattice Cmake. Not sure if needed
+#Leave line below as comment for now
+#add_subdirectory(src/3rdParty/intralattice)
+
+
+#Embedding Intralattice project into this project using ExternalProject
+include(ExternalProject)
+ExternalProject_Add(intralattice_lib
+
+    #I cloned intralattice in this dir
+    SOURCE_DIR "${CMAKE_CURRENT_SOURCE_DIR}/src/3rdParty/intralattice"
+    CONFIGURE_COMMAND "" 
+    CMAKE_COMMAND cmake 
+    #Directory for the build; need to find out how they wrote it in this file.
+    BINARY_DIR "${intra_build_directory}/src/3rdParty/intralattice"
+    BUILD_COMMAND make depend && make lib
+    #This was used for testing, but don't include in the final file
+    #BUILD_IN_SOURCE 1 #use source dir for build dir
+
+    INSTALL_COMMAND make
+)
+
+#======================================================================
+
+
 
 # ================================================================================
 # == for other OSes search the packages ==========================================
